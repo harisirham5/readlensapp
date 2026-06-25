@@ -1,0 +1,9 @@
+[
+    {
+        "timestamp": "2026-06-12T12:02:17.969493",
+        "user": "[Image Analysis - OBJECT_DETECTION]",
+        "bot": "The user is holding a computer mouse.",
+        "image_file": "img_1781236935_a18d10.jpg",
+        "type": "image_object_detection"
+    }
+]

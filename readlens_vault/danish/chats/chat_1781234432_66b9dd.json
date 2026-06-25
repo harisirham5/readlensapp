@@ -1,0 +1,9 @@
+[
+    {
+        "timestamp": "2026-06-12T11:20:34.245699",
+        "user": "[Image Analysis - OCR]",
+        "bot": "The image shows a person holding a water bottle.",
+        "image_file": "img_1781234432_e0f455.jpg",
+        "type": "image_ocr"
+    }
+]

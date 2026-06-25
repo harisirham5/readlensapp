@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>readlens</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div id="onboardingOverlay" class="onboarding-overlay">
+        
+        <div id="introView" class="onboarding-state-view">
+            <div class="intro-bloom"></div>
+            <div class="intro-centered-box">
+                <div class="intro-logo-stage">
+                    <img src="/static/logobarugaiswhitetransparent.png" alt="readlens" class="intro-logo-3d" id="introLogo">
+                </div>
+                <p class="intro-title intro-stagger-1">Explore with readlens</p>
+                <button id="introStartBtn" class="intro-cta-btn intro-stagger-2">Get Started</button>
+            </div>
+        </div>
+
+        <div id="authView" class="onboarding-state-view hidden">
+
+    <!-- Dot grid background -->
+    <div class="auth-dot-grid" aria-hidden="true"></div>
+
+    <div class="auth-card-ms animate-up">
+
+        <!-- Header: hex logo + wordmark + accent dot -->
+        <div class="auth-ms-header">
+            <div class="auth-ms-logorow">
+                <img src="/static/logobarugaisblacktransparent.png" alt="readlens" class="auth-hex-mark">
+                <span class="auth-ms-wordmark">readlens</span>
+                <span class="auth-ms-accentdot" aria-hidden="true"></span>
+            </div>
+            <p class="auth-ms-sub">Good to see you</p>
+        </div>
+
+        <!-- Tabs -->
+        <div class="auth-ms-tabs">
+            <button id="tabLogin"  class="auth-ms-tab active">Log in</button>
+            <button id="tabSignup" class="auth-ms-tab">Sign up</button>
+            <div class="auth-ms-tab-indicator" id="tabIndicator"></div>
+        </div>
+
+        <!-- Form -->
+        <div class="auth-form-body">
+            <div class="auth-input-group">
+                <label for="authUsername">Username</label>
+                <input type="text" id="authUsername" placeholder="Enter your username" autocomplete="off">
+            </div>
+
+            <div class="auth-input-group">
+                <label for="authPassword">Password</label>
+                <input type="password" id="authPassword" placeholder="Enter your password">
+            </div>
+
+            <div class="auth-input-group hidden" id="confirmPasswordWrapper">
+                <label for="authConfirmPassword">Confirm password</label>
+                <input type="password" id="authConfirmPassword" placeholder="Confirm your password">
+            </div>
+
+            <button id="authSubmitBtn" class="auth-submit-action">Log in</button>
+        </div>
+
+        <!-- Footer note -->
+        <p class="auth-ms-footer">Your vision, amplified.</p>
+
+    </div>
+</div>
+
+    </div>
+   <div class="header">
+        <div class="header-left">
+            <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menu">☰</button>
+            <img src="/static/logoandtexttransparenthijau.png" class="header-logo" alt="readlens" style="height: 24px; width: auto; object-fit: contain; cursor: pointer;" onclick="goHome()">
+        </div>
+        
+        <div class="header-center"></div>
+
+        <div class="header-right">
+            <button class="meta-glasses-btn" id="glassesBtn" aria-label="Connect Glasses">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="2" x2="12" y2="8"></line>
+                    <line x1="9" y1="5" x2="15" y2="5"></line>
+                    <circle cx="6" cy="16" r="4"></circle>
+                    <circle cx="18" cy="16" r="4"></circle>
+                    <path d="M10 16a2 2 0 0 0 4 0"></path>
+                    <path d="M2.5 14L5 8"></path>
+                    <path d="M21.5 14L19 8"></path>
+                </svg>
+                Glasses
+            </button>
+            <button class="meta-glasses-btn hidden" id="newChatBtn" aria-label="New Chat" onclick="startNewChat()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 5v14M5 12h14"></path>
+                </svg>
+                New Chat
+            </button>
+        </div>
+    </div>
+
+    <!-- HOME CONTENT -->
+    <div class="main-content home-content" id="homeContent">
+        <div class="greeting">
+            <div class="greeting-hi">Hi there,</div>
+            <div class="greeting-question">Where should we start?</div>
+        </div>
+        <div class="action-chips">
+            <div class="chip" id="chipObj" onclick="toggleChipOptions('object_detection')">
+                <div class="chip-icon obj">🔍</div>
+                <span class="chip-text">Object Identification</span>
+                <div class="float-options" id="floatObj">
+                    <button class="float-opt" onclick="event.stopPropagation(); triggerInput('camera')">
+                        <span>📷</span>
+                        <div class="float-opt-tooltip">Camera</div>
+                    </button>
+                    <button class="float-opt" onclick="event.stopPropagation(); triggerInput('photos')">
+                        <span>🖼️</span>
+                        <div class="float-opt-tooltip">Upload</div>
+                    </button>
+                </div>
+            </div>
+            <div class="chip" id="chipOcr" onclick="toggleChipOptions('ocr')">
+                <div class="chip-icon ocr">📝</div>
+                <span class="chip-text">Text Recognition</span>
+                <div class="float-options" id="floatOcr">
+                    <button class="float-opt" onclick="event.stopPropagation(); triggerInput('camera')">
+                        <span>📷</span>
+                        <div class="float-opt-tooltip">Camera</div>
+                    </button>
+                    <button class="float-opt" onclick="event.stopPropagation(); triggerInput('photos')">
+                        <span>🖼️</span>
+                        <div class="float-opt-tooltip">Upload</div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHAT PANEL -->
+    <div class="chat-panel" id="chatPanel">
+        <div class="messages" id="messages">
+            <div class="message bot">Welcome to readlens. Choose an action above or type a message below.</div>
+        </div>
+    </div>
+
+    <!-- BOTTOM INPUT -->
+    <div class="bottom-bar">
+        <div class="input-container">
+            <textarea id="chatInput" class="chat-input" rows="1" placeholder="Ask readlens..." oninput="handleInput(this)" onkeydown="handleEnter(event)"></textarea>
+            <div class="input-actions">
+                <button class="stop-btn" id="stopButton" onclick="cancelProcessing()" style="background: transparent; padding: 6px; cursor: pointer; color: #ef4444; border: none; font-size: 1.3rem; display: none; font-weight: bold;" title="Stop Processing">
+                    ✕
+                </button>
+
+                <button class="send-btn" id="sendButton" onclick="sendChat()" style="background: transparent; padding: 6px; cursor: pointer; color: var(--muted); transition: color 0.2s; border: none;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
+                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                        <line x1="12" y1="19" x2="12" y2="22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="ai-disclaimer">
+        readlens AI can make mistakes.
+    </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="/static/logobarugaishijau.png" class="sidebar-logo" alt="readlens" style="height:32px; width:auto; object-fit:contain;">
+            <button class="sidebar-close" onclick="closeSidebar()">✕</button>
+        </div>
+        <div class="sidebar-content" id="sidebarContent" style="display:flex; flex-direction:column; gap:8px; overflow-y:auto;">
+            <button onclick="startNewChat()" style="margin-bottom:12px; padding:10px; border-radius:10px; border:none; background:var(--em2); color:#fff; font-family:'Outfit'; font-weight:600; cursor:pointer;">+ New Chat</button>
+            <div id="historyList">
+                <div class="sidebar-placeholder">No recent chats</div>
+            </div>
+        </div>
+        <div class="sidebar-profile-pinned" id="sidebarProfileBtn">
+            <div class="avatar-circle" id="sidebarAvatar">?</div>
+            <span class="sidebar-username" id="sidebarUsernameDisplay">User</span>
+        </div>
+    </div>
+
+    <!-- CAMERA MODAL -->
+    <div class="modal" id="cameraModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3 id="cameraModalTitle">Capture from Camera</h3>
+                <button class="modal-close" onclick="closeCameraModal()">✕</button>
+            </div>
+            <div class="modal-body">
+                <video id="cameraVideo" autoplay playsinline muted></video>
+                <img id="cameraPreview" class="hidden" alt="Preview">
+            </div>
+            <div class="modal-actions">
+                <button class="modal-btn btn-cancel" onclick="closeCameraModal()">Cancel</button>
+                <button class="modal-btn btn-capture" onclick="capturePhoto()">Capture</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="settingsModal">
+        <div class="modal-card auth-card"> <div class="modal-header">
+                <h3>Account Settings</h3>
+                <button class="modal-close" onclick="closeSettingsModal()">✕</button>
+            </div>
+            <div class="modal-body settings-body">
+                <div class="settings-profile-hero">
+                    <div class="avatar-circle large-avatar" id="settingsAvatar">?</div>
+                    <h2 class="settings-username" id="settingsUsernameDisplay">User</h2>
+                </div>
+                
+                <button class="settings-action-btn" onclick="showCustomModal('App Preferences', 'Preferences coming in next update!', 'alert')">
+                    <span class="settings-icon">⚙️</span> App Preferences
+                </button>
+
+                <!-- Pair Glasses Button -->
+                <button class="settings-action-btn" id="settingsAddGlassesBtn">
+                    <span class="settings-icon">👓</span> Pair readlens Glasses
+                </button>
+
+                <button class="settings-action-btn logout-btn" onclick="triggerLogout()">
+                    <span class="settings-icon">🚪</span> Log Out
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADD DEVICE OVERLAY -->
+    <div class="onboarding-overlay hidden" id="deviceOverlay">
+        <div class="modal-card auth-card" style="min-height: 50vh; display: flex; flex-direction: column;">
+            <div class="modal-header" style="border-bottom: none;">
+                <button class="modal-close" onclick="closeDeviceOverlay()">✕</button>
+            </div>
+            
+            <div class="device-content" style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 24px;">
+                <div class="device-icon-glow">
+                    <span style="font-size: 4.5rem;">👓</span>
+                </div>
+                <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.8rem; margin-bottom: 8px;">Connect your readlens</h2>
+                <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.5; margin-bottom: 32px;">
+                    Ensure your readlens device is powered on and connected to the same Wi-Fi network as this device.
+                </p>
+            </div>
+
+            <div style="padding: 24px; width: 100%;">
+                <button class="auth-submit-action" style="width: 100%;" id="startPairingBtn">Add Device</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="onboarding-overlay hidden" id="dashboardOverlay">
+        <div class="modal-card auth-card" style="min-height: 40vh; display: flex; flex-direction: column;">
+            <div class="modal-header" style="border-bottom: none;">
+                <h3 style="font-family: 'Outfit'; font-weight: 600;">Device Dashboard</h3>
+                <button class="modal-close" onclick="closeDashboardOverlay()">✕</button>
+            </div>
+            
+            <div class="modal-body" style="text-align: center; padding: 10px 24px 30px 24px; flex: 1;">
+                <div style="font-size: 4rem; margin-bottom: 0;">🔋</div>
+                <h2 style="font-size: 3rem; font-family: 'Outfit'; margin: 0 0 5px 0;">85%</h2>
+                <div style="color: #10b981; font-weight: 600; font-size: 0.9rem; margin-bottom: 20px;">
+                    <span class="blink-dot">●</span> Connected to ESP32-S3
+                </div>
+                
+                <div style="background: var(--surface2); border-radius: 12px; padding: 12px; margin-bottom: 30px; font-size: 0.85rem; color: var(--muted);">
+                    <strong>IP Address:</strong> 172.20.10.2<br>
+                    <strong>Network:</strong> Local Wi-Fi
+                </div>
+
+                <button class="auth-btn" style="background-color: #ef4444; border: none; color: white; border-radius: 25px;" onclick="disconnectDevice()">
+                    Disconnect Device
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="hardwareLoading" class="hardware-loading-overlay">
+        <div class="hardware-loading-content">
+            <div class="hardware-spinner"></div>
+            <div id="hardwareLoadingText" class="hardware-loading-text">readlens: Syncing snapshot...</div>
+        </div>
+    </div>
+
+    <!-- CUSTOM MODAL (ALERTS & CONFIRMS) -->
+    <div class="onboarding-overlay hidden" id="customModalOverlay" style="z-index: 10000; background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);">
+        <div class="auth-dot-grid" aria-hidden="true"></div>
+        <div class="auth-card-ms animate-up" style="max-width: 320px; text-align: center; padding: 24px;">
+            <div class="auth-ms-header" style="margin-bottom: 16px;">
+                <div class="auth-ms-logorow" style="justify-content: center;">
+                    <img src="/static/logobarugaisblacktransparent.png" alt="readlens" class="auth-hex-mark">
+                </div>
+                <h3 id="customModalTitle" style="font-family: 'Outfit', sans-serif; font-size: 1.2rem; color: #0f0f0f; margin-top: 12px; margin-bottom: 8px;">Notice</h3>
+                <p id="customModalMessage" class="auth-ms-sub" style="font-size: 0.95rem; line-height: 1.4; color: #555;">Message goes here</p>
+            </div>
+            
+            <div style="display: flex; gap: 12px; margin-top: 24px; justify-content: center;" id="customModalActions">
+                <button id="customModalCancelBtn" class="auth-ms-tab" style="background: var(--surface2); color: var(--text); border-radius: 12px; padding: 10px 20px; display: none; flex: 1;">Cancel</button>
+                <button id="customModalConfirmBtn" class="auth-submit-action" style="margin-top: 0; padding: 10px 24px; flex: 1;">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <input type="file" id="photoInput" class="hidden" accept="image/*">
+
+    <script src="/static/main.js"></script>
+</body>
+
+</html>

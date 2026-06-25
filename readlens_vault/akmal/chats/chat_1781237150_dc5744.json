@@ -1,0 +1,9 @@
+[
+    {
+        "timestamp": "2026-06-12T12:05:52.793362",
+        "user": "[Image Analysis - OCR]",
+        "bot": "The image displays a blue card with the word \"AFFIN\" and a logo.",
+        "image_file": "img_1781237150_c53c21.jpg",
+        "type": "image_ocr"
+    }
+]

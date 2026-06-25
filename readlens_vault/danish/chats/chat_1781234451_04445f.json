@@ -1,0 +1,9 @@
+[
+    {
+        "timestamp": "2026-06-12T11:20:53.522114",
+        "user": "[Image Analysis - OCR]",
+        "bot": "The image shows a person holding a blue card.",
+        "image_file": "img_1781234451_44ee23.jpg",
+        "type": "image_ocr"
+    }
+]

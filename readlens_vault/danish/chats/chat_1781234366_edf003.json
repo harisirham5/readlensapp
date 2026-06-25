@@ -1,0 +1,9 @@
+[
+    {
+        "timestamp": "2026-06-12T11:19:27.962933",
+        "user": "[Image Analysis - DESCRIBE]",
+        "bot": "A hand is in front.",
+        "image_file": "img_1781234366_67f09c.jpg",
+        "type": "image_describe"
+    }
+]
