@@ -131,11 +131,11 @@ print("Initializing NVIDIA AI models. This may take a moment...")
 try:
     nvidia_ai = NvidiaHelper()
     if nvidia_ai.ready:
-        print("[OK] NVIDIA API ready!")
+        print("✅ NVIDIA API ready!")
     else:
-        print("[WARNING] NVIDIA API running in DEGRADED mode (no key). /chatbot and /process_image will return 503 until NVIDIA_API_KEY is set.")
+        print("⚠️  NVIDIA API running in DEGRADED mode (no key). /chatbot and /process_image will return 503 until NVIDIA_API_KEY is set.")
 except Exception as e:
-    print(f"[ERROR] NVIDIA API Initialization failed: {e}")
+    print(f"❌ NVIDIA API Initialization failed: {e}")
     nvidia_ai = None
 
 # --- Camera Logic (Local Webcam backup) ---

@@ -1,0 +1,14 @@
+[
+    {
+        "timestamp": "2026-06-25T16:18:53.071954",
+        "user": "[Image Analysis - OBJECT_DETECTION]",
+        "bot": "The user is likely holding a smartphone.",
+        "image_file": "img_1782375517_feebda.jpg",
+        "type": "image_object_detection"
+    },
+    {
+        "timestamp": "2026-06-25T16:19:23.960368",
+        "user": "are you sure about it?",
+        "bot": "I'm not sure what you're referring to, but I can try to help if you provide more context."
+    }
+]

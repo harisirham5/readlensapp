@@ -48,7 +48,7 @@ class NvidiaHelper:
             self.client = None
 
         self.model = 'meta/llama-3.1-8b-instruct'  # Fast text model
-        self.vision_model = 'meta/llama-3.2-90b-vision-instruct'  # Vision model
+        self.vision_model = 'meta/llama-3.2-11b-vision-instruct'  # Vision model (free tier, faster)
 
     def _require_ready(self):
         if not self.ready:
@@ -108,6 +108,6 @@ class NvidiaHelper:
         return [
             'meta/llama-3.1-8b-instruct',
             'meta/llama-3.1-70b-instruct',
-            'meta/llama-3.2-90b-vision-instruct',
+            'meta/llama-3.2-11b-vision-instruct',
             'nvidia/neva-22b'
         ]

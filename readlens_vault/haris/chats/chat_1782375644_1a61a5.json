@@ -1,0 +1,9 @@
+[
+    {
+        "timestamp": "2026-06-25T16:21:17.701503",
+        "user": "[Image Analysis - OBJECT_DETECTION]",
+        "bot": "The user is likely looking at a bird.",
+        "image_file": "img_1782375644_7fb7d4.jpg",
+        "type": "image_object_detection"
+    }
+]
