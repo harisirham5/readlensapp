@@ -1,0 +1,9 @@
+flask
+opencv-python
+openai
+python-dotenv
+requests
+werkzeug
+Pillow
+gTTS
+google-generativeai
